@@ -1,10 +1,10 @@
 model_parameters:
   onnx_model: './yolov8n_seg.onnx'
-  march: "nash-e"
+  march: "nash-p"
   layer_out_dump: False
-  working_dir: 'yolov8n_seg_output_s100'
+  working_dir: 'yolov8n_seg_output_s600'
   output_model_file_prefix: 'yolov8n_seg_640x640_nv12'
-  remove_node_name: "/model.22/cv2.0/cv2.0.2/Conv;/model.22/cv4.0/cv4.0.2/Conv;/model.22/cv2.1/cv2.1.2/Conv;/model.22/cv4.1/cv4.1.2/Conv;/model.22/cv2.2/cv2.2.2/Conv;/model.22/cv4.2/cv4.2.2/Conv;/model.22/proto/cv3/act/Mul_output_0_HzCalibration;347"
+  remove_node_name: "/model.22/cv2.0/cv2.0.2/Conv;/model.22/cv4.0/cv4.0.2/Conv;/model.22/cv2.1/cv2.1.2/Conv;/model.22/cv4.1/cv4.1.2/Conv;/model.22/cv2.2/cv2.2.2/Conv;/model.22/cv4.2/cv4.2.2/Conv;/model.22/proto/cv3/act/Mul_output_0_HzCalibration;347;output1;371;379;395;403;419"
 input_parameters:
   input_name: ""
   input_type_rt: 'nv12'

@@ -13,13 +13,12 @@ model_parameters:
   # Onnx浮点网络数据模型文件
   # -----------------------------------------------------------
   # the model file of floating-point ONNX neural network data
-  # onnx_model: './yolov8n_seg.onnx'
-  onnx_model: './yolov8n_seg.onnx'
+  onnx_model: './yolov8n.onnx'
 
   # 适用BPU架构
   # --------------------------------
   # the applicable BPU architecture
-  march: "bayes-e"
+  march: "nash-p"
 
   # 指定模型转换过程中是否输出各层的中间结果，如果为True，则输出所有层的中间输出结果，
   # --------------------------------------------------------------------------------------
@@ -30,14 +29,14 @@ model_parameters:
   # 模型转换输出的结果的存放目录
   # -----------------------------------------------------------
   # the directory in which model conversion results are stored
-  working_dir: 'yolov8n_seg_output_x5'
+  working_dir: 'yolov8n_output_s600'
 
   # 模型转换输出的用于上板执行的模型文件的名称前缀
   # -----------------------------------------------------------------------------------------
   # model conversion generated name prefix of those model files used for dev board execution
-  output_model_file_prefix: 'yolov8n_seg_640x640_nv12'
+  output_model_file_prefix: 'yolov8n_640x640_nv12'
 
-  # remove_node_type: 'Dequantize'
+  remove_node_name: "318;334;350"
 
 # 模型输入相关参数, 若输入多个节点, 则应使用';'进行分隔, 使用默认缺省设置则写None
 # --------------------------------------------------------------------------
@@ -131,7 +130,7 @@ calibration_parameters:
   # and try to avoid those overexposed, oversaturated, vague, 
   # pure blank or pure white images
   # use ';' to seperate when there are multiple input nodes
-  cal_data_dir: './calibration_data_rgb_f32'
+  cal_data_dir: './calibration_data_rgb_f32_scale'
 
   # 校准数据二进制文件的数据存储类型，可选值为：float32, uint8
   # calibration data binary file save type, available options: float32, uint8
@@ -194,4 +193,4 @@ compiler_parameters:
   # O1-O3: as optimization levels increase gradually, model execution, after compilation, shall become faster
   # while compilation will be prolonged
   # it is recommended to use O2 for fastest verification
-  optimize_level: 'O3'
+  optimize_level: 'O2'

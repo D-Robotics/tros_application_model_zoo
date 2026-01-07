@@ -13,3 +13,10 @@ hb_mapper makertbin --config yolov8n_config.yaml --model-type onnx
 ```shell
 hb_compile --config yolov8n_config_s100.yaml
 ```
+
+### RDK S600
+
+```shell
+hb_compile --config yolov8n_config_s600.yaml
+python3 j6p_int_demo.py
+```
