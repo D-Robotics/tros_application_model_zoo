@@ -1,0 +1,58 @@
+# 模型参数组
+model_parameters:
+  onnx_model: './hand_landmark_full.onnx'
+  march: 'nash-p'
+  output_model_file_prefix: 'hand_224_224'
+  working_dir: './model_output_s600'
+
+
+# 输入信息参数组
+input_parameters:
+  input_name: 'input_1'
+  input_shape: '1x224x224x3'
+  
+  input_layout_train: 'NHWC'
+  input_type_train: 'rgb'
+
+  mean_value: '0.0'
+  scale_value: '0.003921568627451'
+
+  input_type_rt: 'nv12'
+  
+
+# 校准参数组
+calibration_parameters:
+  # 模型校准使用的标定样本的存放目录
+  cal_data_dir: './calibration_data_bgr_s100/input_1'
+  quant_config: 
+    {
+      "model_config":
+      {
+        'all_node_type': 'int16',
+        # "model_output_type": "int16"
+      }
+    }
+      
+  
+  
+# 编译参数组
+compiler_parameters:
+
+  # 编译策略选择
+  compile_mode: 'latency'
+
+  input_source: {'input_1': 'resizer'}
+
+  extra_params: {"input_no_padding": True}
+
+  # 模型运行核心数
+  core_num: 1
+
+  # 模型编译的优化等级选择
+  optimize_level: 'O2'
+
+  # 指定模型的每个function call的最大可连续执行时间
+  max_time_per_fc: 1000
+
+  # 指定编译模型时的进程数
+  jobs: 8
