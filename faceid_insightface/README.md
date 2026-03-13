@@ -365,4 +365,3 @@ A: 本代码假设输入图像已包含裁剪好的人脸区域。如需处理�
 ## 参考资料
 
 - [InsightFace GitHub](https://github.com/deepinsight/insightface)
-- [Horizon RDK X5 文档](https://developer.horizon.ai/)
