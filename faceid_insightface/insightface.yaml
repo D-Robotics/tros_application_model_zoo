@@ -1,0 +1,37 @@
+# 模型参数组
+model_parameters:
+  onnx_model: 'insightface_R100_MS1MV3.onnx'
+  march: 'bayes-e'
+  output_model_file_prefix: 'insightface'
+  working_dir: './model_output'
+  layer_out_dump: False
+
+# 输入信息参数组
+input_parameters:
+  input_type_train: 'rgb'
+  input_layout_train: 'NCHW'
+  input_shape: '1x3x112x112'
+  input_type_rt: 'nv12'
+  norm_type: data_mean_and_scale
+  mean_value: '127.5'
+  scale_value: '127.5'
+
+# 校准参数组
+calibration_parameters:
+  cal_data_dir: './calibration_processed_2000'
+  cal_data_type: 'float32'
+  preprocess_on: False 
+  calibration_type: 'default'
+  max_percentile: 1.0
+  # 关键优化：将Conv和Gemm层设为int16精度（字符串格式，分号分隔）
+  optimization: 'set_Conv_output_int16;set_Gemm_output_int16'
+
+# 编译参数组
+compiler_parameters:
+  compile_mode: 'latency'
+  debug: True
+  core_num: 1
+  optimize_level: 'O3'
+  input_source: {"input.1": "resizer"}
+  max_time_per_fc: 1000
+  jobs: 8

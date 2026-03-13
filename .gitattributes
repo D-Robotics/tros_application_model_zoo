@@ -1,0 +1,2 @@
+faceid_insightface/insightface.onnx filter=lfs diff=lfs merge=lfs -text
+faceid_insightface/insightface.bin filter=lfs diff=lfs merge=lfs -text
