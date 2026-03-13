@@ -2,6 +2,12 @@
 
 ## 编译
 
+### RDK X5
+
+```shell
+hb_mapper makertbin --config conf_x5.yaml --model-type onnx
+```
+
 ### RDK S100
 
 ```shell

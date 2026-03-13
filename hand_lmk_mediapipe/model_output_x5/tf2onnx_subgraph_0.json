@@ -1,0 +1,82 @@
+{
+    "summary": {
+        "BPU OPs per frame (effective)": 662840768,
+        "BPU OPs per run (effective)": 662840768,
+        "BPU PE number": 1,
+        "BPU core number": 1,
+        "BPU march": "B25E",
+        "DDR bytes per frame": 3080448,
+        "DDR bytes per run": 3080448,
+        "DDR bytes per second": 5186375957,
+        "DDR megabytes per frame": 2.938,
+        "DDR megabytes per run": 2.938,
+        "DDR megabytes per second": 4946.1,
+        "FPS": 1683.64,
+        "HBDK version": "3.49.15",
+        "compiling options": "-f hbir -m /tmp/tmp56pl7l4l/tf2onnx_subgraph_0.hbir -o /tmp/tmp56pl7l4l/tf2onnx_subgraph_0.hbm --march bayes-e --progressbar --O3 --core-num 1 --fast --input-layout NHWC --output-layout NHWC --input-source resizer",
+        "frame per run": 1,
+        "frame per second": 1683.64,
+        "input features": [
+            [
+                "input name",
+                "input size"
+            ],
+            [
+                "input_1",
+                "1x224x224x3"
+            ]
+        ],
+        "interval computing unit utilization": [
+            0.786,
+            0.904,
+            0.902,
+            0.857,
+            0.189,
+            0.427
+        ],
+        "interval computing units utilization": [
+            0.786,
+            0.904,
+            0.902,
+            0.857,
+            0.189,
+            0.427
+        ],
+        "interval loading bandwidth (megabytes/s)": [
+            2449,
+            2221,
+            3774,
+            6044,
+            6662,
+            6249
+        ],
+        "interval number": 6,
+        "interval storing bandwidth (megabytes/s)": [
+            0,
+            170,
+            170,
+            0,
+            0,
+            1
+        ],
+        "interval time (ms)": 0.1,
+        "latency (ms)": 0.59,
+        "latency (ms) by segments": [
+            0.0,
+            0.594
+        ],
+        "latency (us)": 594.0,
+        "loaded bytes per frame": 3044320,
+        "loaded bytes per run": 3044320,
+        "model json CRC": "af9a0929",
+        "model json file": "/tmp/tmp56pl7l4l/tf2onnx_subgraph_0.hbir",
+        "model name": "tf2onnx_subgraph_0",
+        "model param CRC": "00000000",
+        "multicore sync time (ms)": 0.0,
+        "run per second": 1683.64,
+        "runtime version": "3.15.55.0",
+        "stored bytes per frame": 36128,
+        "stored bytes per run": 36128,
+        "worst FPS": 1683.64
+    }
+}
