@@ -1,0 +1,74 @@
+  # 模型参数组
+  model_parameters:
+    # 原始Onnx浮点模型文件
+    onnx_model: 'palm_detection_mediapipe_opset11.onnx'
+
+    # 转换的目标处理器架构，保持默认，D-Robotics RDK X3使用的是bernoulli2架构， RDK Ultra使用的是bayes架构。march: 'bayes'， RDK X5使用的是bayes-e架构。march: 'bayes-e'
+    march: 'bayes-e'
+
+    # 模型转换输出的用于上板执行的模型文件的名称前缀
+    output_model_file_prefix: 'palm_det_192_192'
+
+    # 模型转换输出的结果的存放目录
+    working_dir: './model_output_x5'
+
+  # 输入信息参数组
+  input_parameters:
+    # 原始浮点模型的输入节点名称
+    input_name: "input_1"
+
+    # 原始浮点模型的输入数据格式（数量/顺序与input_name一致）
+    input_type_train: 'rgb'
+
+    # 原始浮点模型的输入数据排布（数量/顺序与input_name一致）
+    input_layout_train: 'NHWC'
+
+    # 原始浮点模型的输入数据尺寸
+    input_shape: '1x192x192x3'
+
+    # 网络实际执行时，输入给网络的batch_size, 默认值为1
+    input_batch: 1
+
+    # 在模型中添加的输入数据预处理方法
+    norm_type: 'data_scale'
+
+    # 预处理方法的图像缩放比例，如果是通道缩放比例，value之间必须用空格分隔
+    scale_value: '0.00392156862745098' 
+
+    # 转换后混合异构模型需要适配的输入数据格式（数量/顺序与input_name一致）
+    input_type_rt: 'nv12'
+
+  # 校准参数组
+  calibration_parameters:
+    # 模型校准使用的标定样本的存放目录
+    # cal_data_dir: './calibration_data_bgr_s100/input_1'
+    cal_data_dir: 'calibration_data_rgb_x5/input_1'
+
+    # 指定校准数据二进制文件的数据存储类型。
+    cal_data_type: 'float32'
+
+    # 校准使用的算法类型, 优先使用的 default 校准算法
+    calibration_type: 'default'
+
+    # 指定输出节点的数据精度
+    optimization: set_model_output_int16
+
+  # 编译参数组
+  compiler_parameters:
+    # 编译策略选择
+    compile_mode: 'latency'
+
+    # 是否打开编译的debug信息，保持默认的 False 
+    debug: False
+
+    # 模型运行核心数
+    core_num: 1
+
+    # 模型编译的优化等级选择，保持默认的 O3
+    optimize_level: 'O3'
+
+    # 指定模型的每个function call的最大可连续执行时间
+    # max_time_per_fc: 1000
+
+    # 指定编译模型时的进程数
+    # jobs: 4
